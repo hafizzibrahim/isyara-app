@@ -5,6 +5,7 @@ import 'package:isyara_app/app/modules/home/widgets/history_card_widget.dart';
 import 'package:isyara_app/app/modules/text_to_gesture/views/text_to_gesture_view.dart';
 import 'package:isyara_app/themes.dart';
 
+import '../../text_to_gesture/bindings/text_to_gesture_binding.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -81,7 +82,7 @@ class HomeView extends GetView<HomeController> {
                             );
                           },
                           child: Container(
-                            width: containerWidth, // Lebar responsif
+                            width: containerWidth, // Lebar responsif,
                             padding: const EdgeInsets.all(16), // Dikurangi dari 20
                             decoration: BoxDecoration(
                               color: blue,
@@ -128,6 +129,7 @@ class HomeView extends GetView<HomeController> {
                           onTap: () {
                             Get.to(
                               () => const TextToGestureView(),
+                              binding: TextToGestureBinding(),
                               transition: Transition.rightToLeft,
                               duration: const Duration(milliseconds: 400),
                             );
