@@ -1,10 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:isyara_app/themes.dart';
 
 class HistoryCardWidget extends StatelessWidget {
-  const HistoryCardWidget({super.key});
+  final String text;
+
+  const HistoryCardWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,17 @@ class HistoryCardWidget extends StatelessWidget {
             width: 25,
             height: 25,
           ),
-          const SizedBox(width: 10), 
-          Text("Lorem ipsum dolor sit amet, consectetur", style: regularText12, overflow: TextOverflow.ellipsis, maxLines: 1,),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              text,
+              style: regularText12,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ),
         ],
-      )
+      ),
     );
   }
 }

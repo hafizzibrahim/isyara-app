@@ -6,6 +6,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const GESTURE_TO_TEXT = _Paths.GESTURE_TO_TEXT;
   static const TEXT_TO_GESTURE = _Paths.TEXT_TO_GESTURE;
+  static const HISTORY = _Paths.HISTORY;
 }
 
 abstract class _Paths {
@@ -13,4 +14,5 @@ abstract class _Paths {
   static const HOME = '/home';
   static const GESTURE_TO_TEXT = '/gesture-to-text';
   static const TEXT_TO_GESTURE = '/text-to-gesture';
+  static const HISTORY = '/history';
 }

@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:isyara_app/app/data/models/video_response.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
+import '../../home/controllers/home_controller.dart';
 
 class TextToGestureController extends GetxController {
   final textController = TextEditingController();
@@ -38,7 +39,7 @@ class TextToGestureController extends GetxController {
         final List<dynamic> videoList = data['videos'];
 
         for (var c in videoControllers) {
-          c.removeListener(_videoEndListener); // Hapus listener lama
+          c.removeListener(_videoEndListener);
           await c.dispose();
         }
         videoControllers.clear();
@@ -66,12 +67,16 @@ class TextToGestureController extends GetxController {
         currentVideoIndex.value = 0;
 
         if (videoControllers.isNotEmpty) {
-          _playVideoAtIndex(0); // Mulai pemutaran dari video pertama
+          _playVideoAtIndex(0);
         }
 
         if (Get.focusScope != null) {
           Get.focusScope!.unfocus();
         }
+
+        // Tambahkan ke history di HomeController
+        final homeController = Get.find<HomeController>();
+        homeController.addTextToGestureHistory(inputText);
 
         Get.snackbar("Sukses", "Teks berhasil diterjemahkan ke gesture");
         textController.clear();
@@ -148,9 +153,9 @@ class TextToGestureController extends GetxController {
     }
   }
 
-    void replayVideosFromStart() {
+  void replayVideosFromStart() {
     if (videoControllers.isNotEmpty) {
-      _playVideoAtIndex(0); // Selalu mulai dari video pertama
+      _playVideoAtIndex(0);
     }
   }
 

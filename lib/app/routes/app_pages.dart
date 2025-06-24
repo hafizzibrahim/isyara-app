@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/gesture_to_text/bindings/gesture_to_text_binding.dart';
 import '../modules/gesture_to_text/views/gesture_to_text_view.dart';
+import '../modules/history/bindings/history_binding.dart';
+import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/text_to_gesture/bindings/text_to_gesture_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.TEXT_TO_GESTURE,
       page: () => const TextToGestureView(),
       binding: TextToGestureBinding(),
+    ),
+    GetPage(
+      name: _Paths.HISTORY,
+      page: () => const HistoryView(),
+      binding: HistoryBinding(),
     ),
   ];
 }
