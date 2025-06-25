@@ -1,6 +1,6 @@
 class VideoResponse {
   final String word;
-  final String videoData; // base64 tanpa prefix
+  final String videoData; 
 
   VideoResponse({required this.word, required this.videoData});
 }

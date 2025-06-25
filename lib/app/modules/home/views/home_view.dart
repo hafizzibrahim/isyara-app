@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:isyara_app/app/modules/gesture_to_text/views/gesture_to_text_view.dart';
+import 'package:isyara_app/app/modules/history/bindings/history_binding.dart';
+import 'package:isyara_app/app/modules/history/views/history_view.dart';
 import 'package:isyara_app/app/modules/home/widgets/history_card_widget.dart';
 import 'package:isyara_app/app/modules/text_to_gesture/views/text_to_gesture_view.dart';
 import 'package:isyara_app/themes.dart';
@@ -94,14 +96,17 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
                                           Expanded(
                                             child: Text(
                                               "Video to Text",
-                                              style: semiBoldText16.copyWith(color: Colors.white),
+                                              style: semiBoldText16.copyWith(
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
                                           Image.asset(
@@ -114,7 +119,9 @@ class HomeView extends GetView<HomeController> {
                                       const SizedBox(height: 5),
                                       Text(
                                         "Record your hand sign to generate and get the text!",
-                                        style: regularText10.copyWith(color: Colors.white),
+                                        style: regularText10.copyWith(
+                                          color: Colors.white,
+                                        ),
                                         softWrap: true,
                                       ),
                                     ],
@@ -145,14 +152,17 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
                                           Expanded(
                                             child: Text(
                                               "Text to Gesture",
-                                              style: semiBoldText16.copyWith(color: Colors.white),
+                                              style: semiBoldText16.copyWith(
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
                                           Image.asset(
@@ -164,8 +174,10 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       const SizedBox(height: 5),
                                       Text(
-                                        "Record your hand sign to generate and get the text!",
-                                        style: regularText10.copyWith(color: Colors.white),
+                                        "Write a sentence and see how it's signed in video form!",
+                                        style: regularText10.copyWith(
+                                          color: Colors.white,
+                                        ),
                                         softWrap: true,
                                       ),
                                     ],
@@ -180,7 +192,24 @@ class HomeView extends GetView<HomeController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("History", style: semiBoldText22),
-                            Text("See All", style: semiBoldText12.copyWith(color: blue)),
+                            TextButton(
+                              onPressed: () {
+                                Get.to(
+                                  () => HistoryView(),
+                                  binding: HistoryBinding(),
+                                  transition: Transition.rightToLeft,
+                                  duration: const Duration(milliseconds: 400),
+                                );
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                minimumSize: const Size(0, 0),
+                              ),
+                              child: Text(
+                                "See All",
+                                style: semiBoldText12.copyWith(color: blue),
+                              ),
+                            ),
                           ],
                         ),
                         const SizedBox(height: 10),
@@ -190,12 +219,13 @@ class HomeView extends GetView<HomeController> {
                             return const Text("Belum ada riwayat terjemahan.");
                           }
                           return Column(
-                            children: history.map((text) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: HistoryCardWidget(text: text),
-                              );
-                            }).toList(),
+                            children:
+                                history.map((text) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 16),
+                                    child: HistoryCardWidget(text: text),
+                                  );
+                                }).toList(),
                           );
                         }),
                         const SizedBox(height: 16),

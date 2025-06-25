@@ -18,6 +18,17 @@ class TextToGestureController extends GetxController {
 
   final String baseUrl = "https://healthy-exact-terrier.ngrok-free.app";
 
+  @override
+  void onInit() {
+    super.onInit();
+
+    final initialText = Get.arguments?['initialText'];
+    if (initialText != null && initialText is String && initialText.isNotEmpty) {
+      textController.text = initialText;
+      submitText(); // langsung kirim jika ada teks dari history
+    }
+  }
+
   Future<void> submitText() async {
     final inputText = textController.text.trim();
     if (inputText.isEmpty) {
@@ -171,6 +182,11 @@ class TextToGestureController extends GetxController {
     for (var c in videoControllers) {
       c.dispose();
     }
+    videoControllers.clear();
+    videos.clear();
+    currentVideoIndex.value = 0;
+
+    textController.clear();
     textController.dispose();
     super.onClose();
   }

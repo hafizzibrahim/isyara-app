@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:isyara_app/app/modules/text_to_gesture/controllers/text_to_gesture_controller.dart';
+import 'package:isyara_app/themes.dart';
 import 'package:video_player/video_player.dart';
 
 class TextToGestureView extends GetView<TextToGestureController> {
@@ -9,7 +10,16 @@ class TextToGestureView extends GetView<TextToGestureController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Text to Gesture'), centerTitle: true),
+      backgroundColor: softBlue,
+      appBar: AppBar(
+        backgroundColor: softBlue,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Get.back(),
+        ),
+        title: Text("Text to Gesture", style: semiBoldText22),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
           Expanded(
@@ -86,7 +96,12 @@ class TextToGestureView extends GetView<TextToGestureController> {
       top: false,
       child: Container(
         padding: const EdgeInsets.all(16),
-        color: Colors.white,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+          ),
+        ),
         child: Row(
           children: [
             Expanded(
